@@ -7,6 +7,7 @@ install:
   - choco install -r -y make
   - choco install strawberryperl
   - "SET PATH=C:\\strawberry\\perl\\bin;C:\\strawberry\\perl\\site\\bin;C:\\strawberry\\c\\bin;%PATH%"
+  - "SET PATH=%PATH%;C:\MinGW\msys\1.0\bin;C:\MinGW\bin"
 
 branches:
   # whitelist
@@ -17,6 +18,7 @@ platform: x64
 
 
 build_script:
+  - cmd: 'C:\MinGW\bin\mingw-get install autotools autoconf automake'
   - cmd: echo Running cmake ...
   - cd ./bng2/Network3 
   - mkdir -p m4 
