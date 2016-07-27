@@ -1,0 +1,49 @@
+environment:
+  CTEST_OUTPUT_ON_FAILURE: 1
+  matrix:
+    - generator: "Ninja"
+
+install:
+  - choco install -r -y make
+  - choco install strawberryperl
+  - "SET PATH=C:\\strawberry\\perl\\bin;C:\\strawberry\\perl\\site\\bin;C:\\strawberry\\c\\bin;%PATH%"
+
+branches:
+  # whitelist
+  only:
+    - master
+    - release
+platform: x64
+
+
+build_script:
+  - cmd: echo Running cmake ...
+  - cd ./bng2/Network3 
+  - mkdir -p m4 
+  - cd .. 
+  - perl make_dist.pl --build --validate
+
+# artifacts:
+#  - path: build\NFsim.exe
+#    name: NFsim
+
+# notifications:
+#   - provider: Slack
+#     auth_token:
+#       secure: jN4Fas2b8/Z1yNInrC6yWZf1sHzA5M7M/wANf+O4nRQLRqNqLsmNFGMNusaS+adFyS0kz3TfGBtLjAEKeh84jw==
+#     channel: build-results
+
+# deploy:
+
+#     # Amazon S3 deployment provider settings
+#   - provider: S3
+#     access_key_id:
+#       secure: gyxTxeHww7ldSGxRSqjkAA1qa2JodkLDtmZeVrdmPfA=
+#     secret_access_key:
+#       secure: qbD+jQk8IRRrHhucUlL6D17o4DffrAObRzBlo1ll8NzHG09o2kCGskQzd828WLJD
+#     bucket: bionetgen
+#     folder: 1.12
+#     on:
+#       branch: release 
+#     artifact: nfsim
+#     set_public: true
