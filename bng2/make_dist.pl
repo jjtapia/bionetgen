@@ -90,7 +90,7 @@ my $sys_make = "make";
 my @make_flags = ();
 # tarzip
 my $sys_tarzip = "tar";
-my @tarzip_flags = ("-zxf");
+my @tarzip_flags = ("-zxf --force-local");
 # perl
 my $sys_perl = "perl";
 # validation
