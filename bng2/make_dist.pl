@@ -353,21 +353,23 @@ if (defined $bindir)
     }
 
     # run autoconf
-    print "generating $build_subdir configuration scripts . . .\n";
-    my @args = ($sys_autoconf, @autoconf_flags);
+    #print "generating $build_subdir configuration scripts . . .\n";
+    #my @args = ($sys_autoconf, @autoconf_flags);
+
+    my @args = ($sys_copy, "Makefile.cmake", "Makefile");
     print "command: ", join(" ", @args), "\n";
     unless( system(@args)==0 )
     {  print "make_dist.pl error:\nsome problem running autoconf ($?)";  exit -1; }
 
     if ($build)
     {
-        {
-            print "configuring $build_subdir . . .\n";
-            my @args = ($sys_shell, $sys_configure, @configure_flags, "--prefix=${abs_dist_dir}");
-            print "command: ", join(" ", @args), "\n";
-            unless( system(@args)==0 )
-            {  print "make_dist.pl error:\nsome problem configuring ${build_subdir} ($?)";  exit -1; }
-        }
+        # {
+        #     print "configuring $build_subdir . . .\n";
+        #     my @args = ($sys_shell, $sys_configure, @configure_flags, "--prefix=${abs_dist_dir}");
+        #     print "command: ", join(" ", @args), "\n";
+        #     unless( system(@args)==0 )
+        #     {  print "make_dist.pl error:\nsome problem configuring ${build_subdir} ($?)";  exit -1; }
+        # }
 
         {
             print "making $build_subdir . . .\n";
@@ -377,13 +379,13 @@ if (defined $bindir)
             {  print "make_dist.pl error:\nsome problem making ${build_subdir} ($?)";  exit -1; }
         }
 
-        {
-            print "installing $build_subdir . . .\n";
-            my @args = ($sys_make, "install" );
-            print "command: ", join(" ", @args), "\n";
-            unless( system(@args)==0 )
-            {  print "make_dist.pl error:\nsome problem installing ${build_subdir} ($?)";  exit -1;  }
-        }
+        # {
+        #     print "installing $build_subdir . . .\n";
+        #     my @args = ($sys_make, "install" );
+        #     print "command: ", join(" ", @args), "\n";
+        #     unless( system(@args)==0 )
+        #     {  print "make_dist.pl error:\nsome problem installing ${build_subdir} ($?)";  exit -1;  }
+        # }
 
         {
             #print "appending arch/OS signature to ${run_network} binary . . .\n";
