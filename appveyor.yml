@@ -10,7 +10,7 @@ environment:
 install:
   - choco install -r -y make
   - choco install -y strawberryperl
-  - bash -c "pacman --noconfirm -S autoconf automake libtool"
+  -  C:\msys64\usr\bin\bash -lc -c "pacman --noconfirm -S autoconf automake libtool"
   - "SET PATH=C:\\strawberry\\perl\\bin;C:\\strawberry\\perl\\site\\bin;C:\\strawberry\\c\\bin;%PATH%"
   - "SET PATH=%PATH%;C:\\MinGW\\msys\\1.0\\bin;C:\\MinGW\\bin;C:\\MinGW64\\bin"
 
