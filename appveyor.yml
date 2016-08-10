@@ -1,19 +1,12 @@
 environment:
   CTEST_OUTPUT_ON_FAILURE: 1
-  matrix:
-    - compiler: msvc_msys2
-      ARCH: x64
-      MSYS2_ARCH: x86_64
-      MSYS2_DIR: msys64
-      MSYSTEM: MINGW64
+
 
 install:
-  - choco install -r -y make
-  - choco install -y strawberryperl
   - C:\msys64\usr\bin\bash -lc "pacman --needed --noconfirm -Sy pacman-mirrors"
   - C:\msys64\usr\bin\bash -lc "pacman --noconfirm -Sy"		
-  - C:\msys64\usr\bin\bash -lc "pacman --noconfirm -S autoconf automake "		
-  - C:\msys64\usr\bin\bash -lc "pacman --noconfirm -S mingw-w64-i686-oniguruma mingw-w64-x86_64-oniguruma"
+  - C:\msys64\usr\bin\bash -lc "pacman -S --needed --noconfirm mingw-w64-x86_64-toolchain autoconf automake libtool make patch mingw-w64-x86_64-libtool"
+  - choco install -y strawberryperl
   - "SET PATH=C:\\strawberry\\perl\\bin;C:\\strawberry\\perl\\site\\bin;%PATH%"
   - set PATH=C:\msys64\usr\bin;%PATH%
 
