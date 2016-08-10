@@ -1,12 +1,16 @@
 environment:
   CTEST_OUTPUT_ON_FAILURE: 1
   matrix:
-    - generator: "Ninja"
+    - compiler: msvc_msys2
+      ARCH: x64
+      MSYS2_ARCH: x86_64
+      MSYS2_DIR: msys64
+      MSYSTEM: MINGW64
 
 install:
   - choco install -r -y make
-  - choco install -r -y mingw
   - choco install strawberryperl
+  - bash -c "pacman --noconfirm -S autoconf automake libtool"
   - "SET PATH=C:\\strawberry\\perl\\bin;C:\\strawberry\\perl\\site\\bin;C:\\strawberry\\c\\bin;%PATH%"
   - "SET PATH=%PATH%;C:\\MinGW\\msys\\1.0\\bin;C:\\MinGW\\bin;C:\\MinGW64\\bin"
 
