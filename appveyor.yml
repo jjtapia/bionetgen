@@ -23,7 +23,7 @@ build_script:
   - cd ./bng2/Network3 
   - mkdir -p m4 
   - cd .. 
-  - C:\msys64\usr\bin\bash -lc "perl make_dist.pl --build --validate"
+  - C:\msys64\usr\bin\bash -lc "perl ${APPVEYOR_BUILD_FOLDER}/bng2/make_dist.pl --build --validate"
 
 # artifacts:
 #  - path: build\NFsim.exe
