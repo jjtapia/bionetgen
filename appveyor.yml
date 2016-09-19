@@ -5,7 +5,7 @@ environment:
 install:
   - C:\msys64\usr\bin\bash -lc "pacman --needed --noconfirm -Sy pacman-mirrors"
   - C:\msys64\usr\bin\bash -lc "pacman --noconfirm -Sy"		
-  - C:\msys64\usr\bin\bash -lc "pacman -S --needed --noconfirm mingw-w64-x86_64-toolchain   libtool make patch mingw-w64-x86_64-libtool automake"
+  - C:\msys64\usr\bin\bash -lc "pacman -S --needed --noconfirm mingw-w64-x86_64-toolchain   libtool make patch mingw-w64-x86_64-libtool"
   - choco install -y strawberryperl
   - "SET PATH=C:\\strawberry\\perl\\bin;C:\\strawberry\\perl\\site\\bin;%PATH%"
   - set PATH=C:\msys64\usr\bin;%PATH%
